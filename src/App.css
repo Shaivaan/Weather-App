@@ -10,14 +10,36 @@
   text-align: center;
 }
 .card img{
-  margin-bottom: -10px;
-  margin-top: -5px;
+  margin-bottom: -2px;
+  margin-top: 1px;
+}
+
+.info{
+  border: 3px solid black;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.box{
+  display: flex;
+  justify-content: space-between;
+}
+.box div{
+  font-weight: bold;  
+  font-size: 20px;
+  
 }
 
 .cardText{
   font-size: 17px;
   
   font-weight: bold;
+}
+
+.cards{
+  display: flex;
+  justify-content: space-evenly;
+  width: 110%;
 }
 
 .input-icons {

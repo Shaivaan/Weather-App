@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import {Input} from './Input/Input';
 import { Gelocation } from './Gelocation/Gelocation';
 import { Card } from './Card/Card';
+import { Seven } from './Seven/Seven';
 
 export const Main=()=> {
 
@@ -23,7 +24,7 @@ export const Main=()=> {
   return (
     <div className="App">
       <Input/>
-      <Card/>
+      <Seven/>
      {/* {console.log(Gelocation())} */}
     </div>
   );
