@@ -3,6 +3,22 @@
   width: 60%;
   margin: auto;
 }
+.card{
+  border: 1px solid black;
+  width: 100px;
+  height: 150px;
+  text-align: center;
+}
+.card img{
+  margin-bottom: -10px;
+  margin-top: -5px;
+}
+
+.cardText{
+  font-size: 17px;
+  
+  font-weight: bold;
+}
 
 .input-icons {
   width: 100%;
