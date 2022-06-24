@@ -15,7 +15,7 @@ export const Main=()=> {
     },[])
     
     
-    console.log(ordinate)
+    // console.log(ordinate)
     
     const getClientCor = ()=>{
         Gelocation(setOrdinate);
@@ -23,8 +23,10 @@ export const Main=()=> {
 
   return (
     <div className="App">
-      <Input/>
-      <Seven/>
+    <Input/>
+    {ordinate && <Seven  or = {ordinate}/>}
+    
+    
      {/* {console.log(Gelocation())} */}
     </div>
   );
