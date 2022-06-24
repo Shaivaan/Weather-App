@@ -4,7 +4,8 @@ import { useSelector,useDispatch } from 'react-redux'
 import {Input} from './Input/Input';
 import { Gelocation } from './Gelocation/Gelocation';
 import { Seven } from './Seven/Seven';
-import { addCor } from '../Redux/action';
+import { addCor, addMap } from '../Redux/action';
+import { Maps } from './Map/Map';
 
 
 export const Main=()=> {
@@ -15,8 +16,17 @@ export const Main=()=> {
     
     useEffect(()=>{
         getClientCor();
-        getLocation()
+        getLocation();
+        
     },[])
+
+    const getCityName = (lat,lon)=>{
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=ddc894a0a38425be12ca6bbf79cb31e5`).then((res)=>{
+        res.json().then((res)=>{
+          dispatch(addMap(res.name))
+        })
+      })
+    }
 
 
     function getLocation() {
@@ -40,6 +50,8 @@ export const Main=()=> {
     longitude:position.coords.longitude
    }))
 
+   getCityName(position.coords.latitude,position.coords.longitude);
+
     }
     
     
@@ -51,7 +63,7 @@ export const Main=()=> {
     <div className="App">
     <Input/>
     {cor && <Seven/>}
-    
+    <Maps/>
     
     </div>
   );

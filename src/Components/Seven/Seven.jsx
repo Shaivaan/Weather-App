@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import  { useSelector } from 'react-redux'
 import { Card } from '../Card/Card';
 import { Info } from '../Info/Info';
+import { Maps } from '../Map/Map';
 
 
 export const Seven = () => {
@@ -109,6 +110,7 @@ export const Seven = () => {
         })}
     </div>
     <br />
+       
         <Info pressure={info.pressure} temp= {info.temp} humidity= {info.humidity} sunrise= {info.sunrise} sunset={info.sunset}/>
         </div>
    
