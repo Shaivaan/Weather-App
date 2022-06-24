@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import  { useSelector } from 'react-redux'
 import { Card } from '../Card/Card';
 import { Info } from '../Info/Info';
-const timeFormatter = require("seconds-time-formatter");
 
-export const Seven = ({or}) => {
+
+export const Seven = () => {
+    const cor = useSelector((store)=>{return store.cor});
     const [data,setData] = useState([]);
     const [info,setInfo] = useState({
         humidity:"",
@@ -12,15 +14,15 @@ export const Seven = ({or}) => {
         sunset:"",
         temp:"",
     })
-
+   
     useEffect(()=>{
         getData();
-    },[])
+    },[cor])
 
-    console.log(or);
+   
     
     const getData = ()=>{
-        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${or.latitude}&lon=${or.longitude}&exclude=hourly,minutely,alerts,current&appid=ddc894a0a38425be12ca6bbf79cb31e5&units=metric`).then((res)=>{
+        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${cor.latitude}&lon=${cor.longitude}&exclude=hourly,minutely,alerts,current&appid=ddc894a0a38425be12ca6bbf79cb31e5&units=metric`).then((res)=>{
             res.json().then((res)=>{
                 setData([...res.daily]);
                 setInfo({
@@ -82,7 +84,7 @@ export const Seven = ({or}) => {
       12: "December",
     };
 
-    // console.log(date.getDate(), day);
+    
     if (t == "time") {
       return date.toLocaleTimeString();
     } else if (t == "year") {

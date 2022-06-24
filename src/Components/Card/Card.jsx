@@ -5,13 +5,13 @@ export const Card = ({sec,temp,desc}) => {
     const [imag,setImag] = useState(false);
 
     function chooseImg(desc){
-      if(desc == "Clear"){
+      if(desc === "Clear"){
         setImag("https://weatherapp-swanand.netlify.app/img/sunny.ef428e2d.svg")
         return;
-      }else if(desc == "Clouds"){
+      }else if(desc === "Clouds"){
         setImag("https://weatherapp-swanand.netlify.app/img/cloudy.ac49ed24.svg")
         return;
-      }else if(desc == "Rain"){
+      }else if(desc === "Rain"){
         setImag("https://cdn-icons-png.flaticon.com/512/1146/1146858.png")
         return;
       }
@@ -57,9 +57,9 @@ var monthobj = {
 };
 
 // console.log(date.getDate(), day);
-if (t == "time") {
+if (t === "time") {
 return date.toLocaleTimeString();
-} else if (t == "year") {
+} else if (t === "year") {
 return date.getDate() + " " + weekobj[day] + " " + year;
 } else {
 return  weekobj[day];

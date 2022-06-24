@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import Geolocation from "react-geolocation"
+
 export const Gelocation = (setOrdinate) => {
+   
     
     
+   
+
     let data;
     function getLocation() {
         if (navigator.geolocation) {
@@ -17,6 +19,7 @@ export const Gelocation = (setOrdinate) => {
       latitude:position.coords.latitude,
       longitude:position.coords.longitude
      })
+
       }
 
       getLocation();
