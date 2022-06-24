@@ -6,18 +6,19 @@ import { Gelocation } from './Gelocation/Gelocation';
 import { Seven } from './Seven/Seven';
 import { addCor, addMap } from '../Redux/action';
 import { Maps } from './Map/Map';
+import LoadingScreen from 'react-loading-screen';
 
 
 export const Main=()=> {
-
+    const [loaded,setLoaded] = useState(false);
     const dispatch = useDispatch();
     const cor = useSelector((store)=>{return store.cor});
     const [ordinate,setOrdinate] = useState();
     
     useEffect(()=>{
-        getClientCor();
+        // getClientCor();
         getLocation();
-        
+       
     },[])
 
     const getCityName = (lat,lon)=>{
@@ -30,11 +31,10 @@ export const Main=()=> {
 
 
     function getLocation() {
+      setLoaded(true)
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
-      
       } else { 
-          
       }
     }
 
@@ -49,9 +49,8 @@ export const Main=()=> {
     latitude:position.coords.latitude,
     longitude:position.coords.longitude
    }))
-
+   setLoaded(true)
    getCityName(position.coords.latitude,position.coords.longitude);
-
     }
     
     
@@ -61,9 +60,21 @@ export const Main=()=> {
 
   return (
     <div className="App">
-    <Input/>
+
+      {loaded == false  ?  <LoadingScreen
+    loading={true}
+    bgColor='#f1f1f1'
+    spinnerColor='#9ee5f8'
+    textColor='#676767'
+    logoSrc='https://media1.giphy.com/media/58Y1tQU8AAhna/giphy.gif'
+    text='Loading...'
+  > 
+    
+    //<div>Loadable content</div>
+  </LoadingScreen> :<> <Input/>
     {cor && <Seven/>}
-    <Maps/>
+    <Maps/></>}
+   
     
     </div>
   );
