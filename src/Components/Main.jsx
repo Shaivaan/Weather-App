@@ -7,6 +7,7 @@ import { Seven } from './Seven/Seven';
 import { addCor, addMap } from '../Redux/action';
 import { Maps } from './Map/Map';
 import LoadingScreen from 'react-loading-screen';
+import  Charts  from './Chart/Chart';
 
 
 export const Main=()=> {
@@ -14,12 +15,16 @@ export const Main=()=> {
     const dispatch = useDispatch();
     const cor = useSelector((store)=>{return store.cor});
     const [ordinate,setOrdinate] = useState();
-    
+    const temp = useSelector((store)=>{return store.temp});
     useEffect(()=>{
         // getClientCor();
         getLocation();
        
-    },[])
+    },[]);
+
+   
+
+
 
     const getCityName = (lat,lon)=>{
       fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=ddc894a0a38425be12ca6bbf79cb31e5`).then((res)=>{
@@ -60,6 +65,7 @@ export const Main=()=> {
 
   return (
     <div className="App">
+      <Charts temp = {temp}/>
 
       {loaded == false  ?  <LoadingScreen
     loading={true}

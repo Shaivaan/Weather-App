@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import  { useSelector } from 'react-redux'
+import  { useDispatch, useSelector } from 'react-redux'
+import { addTemp } from '../../Redux/action';
 import { Card } from '../Card/Card';
 import { Info } from '../Info/Info';
 import { Maps } from '../Map/Map';
@@ -7,6 +8,7 @@ import { Maps } from '../Map/Map';
 
 export const Seven = () => {
     const cor = useSelector((store)=>{return store.cor});
+    const disptach = useDispatch();
     const [data,setData] = useState([]);
     const [info,setInfo] = useState({
         humidity:"",
@@ -26,6 +28,9 @@ export const Seven = () => {
         fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${cor.latitude}&lon=${cor.longitude}&exclude=hourly,minutely,alerts,current&appid=ddc894a0a38425be12ca6bbf79cb31e5&units=metric`).then((res)=>{
             res.json().then((res)=>{
                 setData([...res.daily]);
+                let a = res.daily[0];
+                let arr = [a.temp.morn,a.temp.day,a.temp.eve,a.temp.night]
+                disptach(addTemp(arr));
                 setInfo({
                     humidity:res.daily[0].humidity,
                     pressure:res.daily[0].pressure,
