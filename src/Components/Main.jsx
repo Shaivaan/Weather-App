@@ -7,7 +7,7 @@ import { Seven } from './Seven/Seven';
 import { addCor, addMap } from '../Redux/action';
 import { Maps } from './Map/Map';
 import LoadingScreen from 'react-loading-screen';
-import  Charts  from './Chart/Chart';
+import  {Schart}  from './Chart/Chart';
 
 
 export const Main=()=> {
@@ -15,7 +15,7 @@ export const Main=()=> {
     const dispatch = useDispatch();
     const cor = useSelector((store)=>{return store.cor});
     const [ordinate,setOrdinate] = useState();
-    const temp = useSelector((store)=>{return store.temp});
+    
     useEffect(()=>{
         // getClientCor();
         getLocation();
@@ -65,7 +65,9 @@ export const Main=()=> {
 
   return (
     <div className="App">
-      <Charts temp = {temp}/>
+
+     
+      
 
       {loaded == false  ?  <LoadingScreen
     loading={true}
@@ -78,8 +80,12 @@ export const Main=()=> {
     
     //<div>Loadable content</div>
   </LoadingScreen> :<> <Input/>
+    
     {cor && <Seven/>}
-    <Maps/></>}
+      <div><Maps/></div>
+      
+    
+    </>}
    
     
     </div>

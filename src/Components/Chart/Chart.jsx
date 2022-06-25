@@ -1,14 +1,30 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import Chart from "react-apexcharts";
+import { useSelector } from 'react-redux';
+import { store } from '../../Redux/store';
 
+export const Schart = ()=>{
+    const temp = useSelector((store)=>store.temp);
 
+    useEffect(()=>{
+        
+    },[temp])
 
+    const RenderChart = ()=>{
+        return <>
+         <Charts temp = {temp}/>
+        </>
+    }
 
-
+    return <>
+        <RenderChart/>
+    </>
+}
+   
+  
 class Charts extends Component {
     constructor(props) { 
       super(props);
-        console.log(props.temp)
       this.state = {
         options: {
           chart: {
@@ -20,14 +36,19 @@ class Charts extends Component {
           xaxis: {
             categories: ["Morning","Day","Evening","Night"]
           },
+          yaxis: {
+            labels:{
+                show:false
+            }
+          },
           dataLabels:{
             enabled:false
           }
         },
         series: [
           {
-            name: "series-1",
-            data: [11,12,13,14]
+            name: "Temp(in°C)",
+            data: props.temp
           }
         ]
       };
@@ -35,14 +56,14 @@ class Charts extends Component {
   
     render() {
       return (
-        <div className="app">
+        <div className="chartapp">
           <div className="row">
             <div className="mixed-chart">
               <Chart
                 options={this.state.options}
                 series={this.state.series}
                 type="area"
-                width="500"
+                width="100%"
               />
             </div>
           </div>
@@ -51,4 +72,4 @@ class Charts extends Component {
     }
   }
 
-export default Charts;
+

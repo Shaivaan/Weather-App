@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import  { useDispatch, useSelector } from 'react-redux'
 import { addTemp } from '../../Redux/action';
 import { Card } from '../Card/Card';
+import { Schart } from '../Chart/Chart';
 import { Info } from '../Info/Info';
 import { Maps } from '../Map/Map';
 
 
 export const Seven = () => {
+  const temp = useSelector((store)=>{return store.temp});
     const cor = useSelector((store)=>{return store.cor});
     const disptach = useDispatch();
     const [data,setData] = useState([]);
@@ -23,13 +25,13 @@ export const Seven = () => {
     },[cor])
 
    
-    
+    // ddc894a0a38425be12ca6bbf79cb31e5   
     const getData = ()=>{
-        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${cor.latitude}&lon=${cor.longitude}&exclude=hourly,minutely,alerts,current&appid=ddc894a0a38425be12ca6bbf79cb31e5&units=metric`).then((res)=>{
+        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${cor.latitude}&lon=${cor.longitude}&exclude=hourly,minutely,alerts,current&appid=101a92bcfac16a59b72f70ca121a9b6d&units=metric`).then((res)=>{
             res.json().then((res)=>{
                 setData([...res.daily]);
                 let a = res.daily[0];
-                let arr = [a.temp.morn,a.temp.day,a.temp.eve,a.temp.night]
+                let arr = [`${a.temp.morn}°C`,`${a.temp.day}°C`,`${a.temp.eve}°C`,`${a.temp.night}°C`]
                 disptach(addTemp(arr));
                 setInfo({
                     humidity:res.daily[0].humidity,
@@ -52,6 +54,7 @@ export const Seven = () => {
             sunset: convertSecondstoTime(el.sunset,"time"),
             temp: el.temp.day 
         })
+        disptach(addTemp([`${el.temp.morn}°C`,`${el.temp.day}°C`,`${el.temp.eve}°C`,`${el.temp.night}°C`]))
     }
 
     
@@ -92,7 +95,7 @@ export const Seven = () => {
 
     
     if (t == "time") {
-      return date.toLocaleTimeString();
+      return date.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});
     } else if (t == "year") {
       return date.getDate() + " " + weekobj[day] + " " + year;
     } else {
@@ -116,6 +119,7 @@ export const Seven = () => {
     </div>
     <br />
        
+    <div> {!temp ? "" : <Schart/>}</div>
         <Info pressure={info.pressure} temp= {info.temp} humidity= {info.humidity} sunrise= {info.sunrise} sunset={info.sunset}/>
         </div>
    
