@@ -36,11 +36,6 @@ class Charts extends Component {
           xaxis: {
             categories: ["Morning","Day","Evening","Night"]
           },
-          yaxis: {
-            labels:{
-                show:false
-            }
-          },
           dataLabels:{
             enabled:false
           }
@@ -64,6 +59,7 @@ class Charts extends Component {
                 series={this.state.series}
                 type="area"
                 width="100%"
+                height="300px"
               />
             </div>
           </div>
