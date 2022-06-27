@@ -76,7 +76,9 @@ export const Main=()=> {
     textColor='#676767'
     logoSrc='https://media1.giphy.com/media/58Y1tQU8AAhna/giphy.gif'
     text='Loading...'
+    
   > 
+  
     
     //<div>Loadable content</div>
   </LoadingScreen> :<> <Input/>
