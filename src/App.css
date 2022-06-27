@@ -127,7 +127,7 @@
   }
   .card{
     width: 12vh;
-    /* height: 8vh; */
+    height: 16vh;
   }
   .imag{
     height: 20%;
@@ -135,6 +135,9 @@
   }
   .cards{
     overflow-x: scroll;
+  }
+  .box div{
+    font-size: 2vh;
   }
  
   
