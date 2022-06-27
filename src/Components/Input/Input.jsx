@@ -55,7 +55,9 @@ export const Input = () => {
             <div>
       <GoLocation className='ii'/>
             </div>
+            <div className='flexx'>
       <input type="text" value={value}  id = "inp" placeholder='Search' onChange={(e)=>{changeInput(e.target.value)}} color='grey'/>
+      </div>
         </div>
             
             {/* {searchData.length == 0 ? "" :   } */}
