@@ -4,6 +4,8 @@ export const Card = ({sec,temp,desc}) => {
     const days = convertSecondstoTime(sec);
     const [imag,setImag] = useState(false);
 
+    console.log(desc);
+
     function chooseImg(desc){
       if(desc === "Clear"){
         setImag("https://weatherapp-swanand.netlify.app/img/sunny.ef428e2d.svg")
@@ -22,7 +24,7 @@ export const Card = ({sec,temp,desc}) => {
 
       chooseImg(desc);
 
-    },[])
+    },[desc])
 
 
     function convertSecondstoTime(int,t) {
