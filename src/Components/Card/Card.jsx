@@ -4,7 +4,7 @@ export const Card = ({sec,temp,desc}) => {
     const days = convertSecondstoTime(sec);
     const [imag,setImag] = useState(false);
 
-    console.log(desc);
+    
 
     function chooseImg(desc){
       if(desc === "Clear"){
