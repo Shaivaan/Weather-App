@@ -9,7 +9,6 @@ import dotenv from  'dotenv'
 
 
 export const Seven = () => {
-  
   const temp = useSelector((store) => {
     return store.temp;
   });

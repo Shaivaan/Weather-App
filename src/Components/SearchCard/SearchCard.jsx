@@ -4,7 +4,7 @@ export const SearchCard=({city,state})=> {
   return (
     <>
     <div className='city'>
-      <h3>ㅤ  {city}, {state} </h3>
+      <div className='search_text'>ㅤ  {city}, {state} </div>
     </div>
     </>
   )
